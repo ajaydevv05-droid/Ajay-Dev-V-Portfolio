@@ -1,65 +1,64 @@
-// Navigation menu toggle for mobile
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const links = document.querySelectorAll('.nav-links li');
-const navbar = document.querySelector('.navbar');
+// Scroll Progress Bar
+const progress = document.querySelector('.progress');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('toggle');
+window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled =
+        (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+
+    progress.style.width = scrolled + '%';
 });
 
-// Close mobile menu when clicking a link
-links.forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('toggle');
+// Dark / Light Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+
+    if (document.body.classList.contains('light')) {
+        themeToggle.textContent = '☀️';
+    } else {
+        themeToggle.textContent = '🌙';
+    }
+});
+
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        targetSection.scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 });
 
-// Scroll animations to fade in sections
-const sections = document.querySelectorAll('.section-fade');
+// Reveal Animation on Scroll
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    },
+    {
+        threshold: 0.1
+    }
+);
 
-const observerOptions = {
-    root: null,
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-};
-
-const observer = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            return;
-        }
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-    });
-}, observerOptions);
-
-sections.forEach(section => {
+document.querySelectorAll('section').forEach(section => {
+    section.classList.add('hidden');
     observer.observe(section);
 });
 
-// Add active state to nav links on scroll & modify navbar style
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    document.querySelectorAll('section').forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-            current = section.getAttribute('id');
-        }
-    });
+// Navbar Background Change on Scroll
+const navbar = document.querySelector('nav');
 
-    document.querySelectorAll('.nav-links a').forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href').includes(current)) {
-            a.classList.add('active');
-        }
-    });
-    
-    // Navbar background change on scroll
+window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
@@ -67,31 +66,97 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Initial trigger for scroll styling
-if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
+// Active Navigation Highlight
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Typing Effect for Hero Section
+const roles = [
+    "Full Stack Developer",
+    "Angular Developer",
+    "Node.js Developer",
+    "Web Developer"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const roleElement = document.querySelector('.typing-role');
+
+function typeEffect() {
+    if (!roleElement) return;
+
+    const currentRole = roles[roleIndex];
+
+    if (!deleting) {
+        roleElement.textContent =
+            currentRole.substring(0, charIndex++);
+
+        if (charIndex > currentRole.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1500);
+            return;
+        }
+    } else {
+        roleElement.textContent =
+            currentRole.substring(0, charIndex--);
+
+        if (charIndex < 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+        }
+    }
+
+    setTimeout(typeEffect, deleting ? 50 : 100);
 }
 
-// Contact Form Submission (Prevent Default)
-const contactForm = document.getElementById('contactForm');
-if(contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+typeEffect();
+
+// Contact Form Validation
+const contactForm = document.querySelector('#contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', e => {
         e.preventDefault();
-        
-        const btn = this.querySelector('button');
-        const originalText = btn.innerHTML;
-        
-        // Simple visual feedback
-        btn.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>';
-        btn.style.background = 'linear-gradient(135deg, #27c93f, #1aa32f)';
-        
-        // Reset form
-        this.reset();
-        
-        // Revert button after 3 seconds
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = ''; // Revert to CSS defined background
-        }, 3000);
+
+        const name =
+            document.querySelector('#name').value.trim();
+
+        const email =
+            document.querySelector('#email').value.trim();
+
+        const message =
+            document.querySelector('#message').value.trim();
+
+        if (!name || !email || !message) {
+            alert('Please fill all required fields.');
+            return;
+        }
+
+        alert('Message submitted successfully!');
+
+        contactForm.reset();
     });
 }
