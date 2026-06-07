@@ -1,162 +1,50 @@
-// Scroll Progress Bar
-const progress = document.querySelector('.progress');
+/* ── SCROLL PROGRESS BAR ── */
+const progressBar = document.createElement('div');
+progressBar.style.cssText = `
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+  z-index: 999;
+  transition: width 0.1s linear;
+`;
+document.body.prepend(progressBar);
 
 window.addEventListener('scroll', () => {
-    const h = document.documentElement;
-    const scrolled =
-        (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-
-    progress.style.width = scrolled + '%';
+  const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  progressBar.style.width = (scrolled * 100) + '%';
 });
 
-// Dark / Light Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
+/* ── ACTIVE NAV LINK ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav ul a');
 
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-
-    if (document.body.classList.contains('light')) {
-        themeToggle.textContent = '☀️';
-    } else {
-        themeToggle.textContent = '🌙';
+function updateActiveLink() {
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 80) {
+      current = sec.getAttribute('id');
     }
-});
-
-// Smooth Scroll for Navigation Links
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-
-        targetSection.scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Reveal Animation on Scroll
-const observer = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            }
-        });
-    },
-    {
-        threshold: 0.1
-    }
-);
-
-document.querySelectorAll('section').forEach(section => {
-    section.classList.add('hidden');
-    observer.observe(section);
-});
-
-// Navbar Background Change on Scroll
-const navbar = document.querySelector('nav');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Active Navigation Highlight
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav ul li a');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.clientHeight;
-
-        if (window.scrollY >= sectionTop) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Typing Effect for Hero Section
-const roles = [
-    "Full Stack Developer",
-    "Angular Developer",
-    "Node.js Developer",
-    "Web Developer"
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-const roleElement = document.querySelector('.typing-role');
-
-function typeEffect() {
-    if (!roleElement) return;
-
-    const currentRole = roles[roleIndex];
-
-    if (!deleting) {
-        roleElement.textContent =
-            currentRole.substring(0, charIndex++);
-
-        if (charIndex > currentRole.length) {
-            deleting = true;
-            setTimeout(typeEffect, 1500);
-            return;
-        }
-    } else {
-        roleElement.textContent =
-            currentRole.substring(0, charIndex--);
-
-        if (charIndex < 0) {
-            deleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-        }
-    }
-
-    setTimeout(typeEffect, deleting ? 50 : 100);
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
 }
 
-typeEffect();
+window.addEventListener('scroll', updateActiveLink);
+updateActiveLink();
 
-// Contact Form Validation
-const contactForm = document.querySelector('#contactForm');
+/* ── SCROLL REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal');
 
-if (contactForm) {
-    contactForm.addEventListener('submit', e => {
-        e.preventDefault();
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
 
-        const name =
-            document.querySelector('#name').value.trim();
-
-        const email =
-            document.querySelector('#email').value.trim();
-
-        const message =
-            document.querySelector('#message').value.trim();
-
-        if (!name || !email || !message) {
-            alert('Please fill all required fields.');
-            return;
-        }
-
-        alert('Message submitted successfully!');
-
-        contactForm.reset();
-    });
-}
+revealEls.forEach(el => observer.observe(el));
