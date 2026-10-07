@@ -3,215 +3,503 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ajay Dev V — Full Stack Developer</title>
+  <title>Ajay Dev V — Full Stack Developer Portfolio</title>
+  <meta name="description" content="Personal portfolio of Ajay Dev V, a BCA Graduate & Full Stack Developer from Kerala, India specializing in Angular, Node.js, and MySQL.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <span class="nav-name">Ajay Dev V</span>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"><span class="cursor-label" id="cursorLabel"></span></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="status-pill">
-      <span class="status-dot"></span> Open to Work
-    </div>
-    <h1>Ajay Dev V<br><em>Full Stack Developer</em></h1>
-    <p class="hero-desc">BCA graduate from Kerala with hands-on experience building full stack web applications using Angular, Node.js, and MySQL.</p>
-    <div class="hero-meta">
-      <span class="meta-item">📍 Kerala, India</span>
-      <span class="meta-divider">·</span>
-      <span class="meta-item">🎓 BCA Graduate</span>
-      <span class="meta-divider">·</span>
-      <span class="meta-item">💻 2 Projects</span>
-    </div>
-    <div class="hero-cta">
-      <a href="#projects" class="btn btn-solid">View My Projects</a>
-      <a href="mailto:ajaydevv05@gmail.com" class="btn btn-ghost">ajaydevv05@gmail.com</a>
-    </div>
-  </div>
-</div>
+  <header class="navbar-wrapper">
+    <nav class="navbar container">
+      <a href="#home" class="nav-logo"><span class="logo-ai"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg></span><span class="logo-accent">AJAY</span> DEV V</a>
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#journey" class="nav-link">Journey</a></li>
+        <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="theme-switcher"><button class="theme-btn" id="themeBtn" aria-label="Change color theme" aria-expanded="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></button><div class="theme-menu" id="themeMenu"><button class="theme-option" data-theme-pick="blush" style="--sw:#ff8fa3"><span class="theme-swatch"></span>Blush</button><button class="theme-option" data-theme-pick="ocean" style="--sw:#2563eb"><span class="theme-swatch"></span>Ocean</button><button class="theme-option" data-theme-pick="sunset" style="--sw:#ea580c"><span class="theme-swatch"></span>Sunset</button><button class="theme-option" data-theme-pick="violet" style="--sw:#7c3aed"><span class="theme-swatch"></span>Violet</button><button class="theme-option" data-theme-pick="emerald" style="--sw:#059669"><span class="theme-swatch"></span>Emerald</button><button class="theme-option" data-theme-pick="rose" style="--sw:#e11d48"><span class="theme-swatch"></span>Rose</button></div></div>
+        <a href="#contact" class="btn btn-sm btn-dark">Let's Talk</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <span class="section-title">About Me</span>
-    </div>
-    <div class="about-body">
-      <div class="about-text reveal">
-        <p>I'm a passionate Full Stack Developer and recent BCA graduate from Kerala, India. I enjoy building web applications that are practical, clean, and solve real problems.</p>
-        <p>My experience covers both front-end and back-end development — from building responsive UIs with Angular to writing server-side logic with Node.js and managing relational databases with MySQL.</p>
-        <p>Through my projects UniBites and Arthub, I've strengthened my skills in system design, database architecture, and delivering complete, working applications end to end. I'm actively looking for my first professional role where I can grow and contribute.</p>
-      </div>
-      <div class="about-aside reveal">
-        <div class="aside-row">
-          <div class="aside-label">Degree</div>
-          <div class="aside-val">BCA Graduate</div>
-        </div>
-        <div class="aside-row">
-          <div class="aside-label">Location</div>
-          <div class="aside-val">Kerala, India</div>
-        </div>
-        <div class="aside-row">
-          <div class="aside-label">Availability</div>
-          <div class="aside-val">Immediate</div>
-        </div>
-        <div class="aside-row">
-          <div class="aside-label">Work Type</div>
-          <div class="aside-val">Full-time / Remote</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero-section" data-hero-section>
+      <div class="container hero-grid" id="heroGrid">
+        <div class="hero-content" id="heroContent">
+          <div class="status-pill reveal-item"><span class="status-dot"></span> Open to Work</div>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-title">Technical Skills</span>
-    </div>
-    <div class="skills-list">
-      <div class="skill-row reveal">
-        <span class="skill-category">Frontend</span>
-        <div class="skill-tags">
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">Angular</span>
-          <span class="tag">Responsive Design</span>
-        </div>
-      </div>
-      <div class="skill-row reveal">
-        <span class="skill-category">Backend</span>
-        <div class="skill-tags">
-          <span class="tag">Node.js</span>
-          <span class="tag">PHP</span>
-        </div>
-      </div>
-      <div class="skill-row reveal">
-        <span class="skill-category">Database</span>
-        <div class="skill-tags">
-          <span class="tag">MySQL</span>
-          <span class="tag">SQL Queries</span>
-          <span class="tag">Database Design</span>
-        </div>
-      </div>
-      <div class="skill-row reveal">
-        <span class="skill-category">Languages</span>
-        <div class="skill-tags">
-          <span class="tag">C</span>
-          <span class="tag">C++</span>
-          <span class="tag">Java</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">PHP</span>
-        </div>
-      </div>
-      <div class="skill-row reveal">
-        <span class="skill-category">Tools</span>
-        <div class="skill-tags">
-          <span class="tag">Git</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">VS Code</span>
-          <span class="tag">Linux</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <h1 class="hero-title reveal-item" id="heroTitle">
+            <span class="text-sub">FULL STACK DEVELOPER</span>
+            <span class="text-main" data-hero-name>AJAY DEV V</span>
+          </h1>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <span class="section-title">Projects</span>
-    </div>
-    <div class="projects-list">
-      <div class="project-card reveal">
-        <div class="project-top">
-          <span class="project-name">UniBites</span>
-          <a href="https://github.com/ajaydevv05-droid/unibites" target="_blank" class="project-link-btn">GitHub ↗</a>
-        </div>
-        <p class="project-desc">A college canteen management platform that handles menu listing, food ordering, and kitchen-side order tracking. Built to simplify the daily food workflow for students and canteen staff.</p>
-        <div class="project-stack">
-          <span class="stack-tag">Angular</span>
-          <span class="stack-tag">Node.js</span>
-          <span class="stack-tag">MySQL</span>
-        </div>
-      </div>
-      <div class="project-card reveal">
-        <div class="project-top">
-          <span class="project-name">Arthub</span>
-          <a href="https://github.com/ajaydevv05-droid/Arthub" target="_blank" class="project-link-btn">GitHub ↗</a>
-        </div>
-        <p class="project-desc">An online digital art gallery where artists can create a profile, upload and showcase their artwork. Focused on clean presentation and straightforward content management.</p>
-        <div class="project-stack">
-          <span class="stack-tag">PHP</span>
-          <span class="stack-tag">MySQL</span>
-          <span class="stack-tag">HTML</span>
-          <span class="stack-tag">CSS</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <p class="hero-description reveal-item" id="heroDesc">
+            I build modern web experiences by combining clean frontend interfaces, reliable backend systems and practical problem-solving.
+          </p>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <span class="section-title">Contact</span>
-    </div>
-    <p class="contact-intro">Feel free to reach out — whether it's about a job opportunity, a project, or just a conversation.</p>
-    <div class="contact-grid reveal">
-      <a href="mailto:ajaydevv05@gmail.com" class="contact-card">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-val">ajaydevv05@gmail.com</div>
+          <div class="hero-actions reveal-item">
+            <a href="#projects" class="btn btn-primary magnetic-btn">
+              <span>View My Work</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="btn btn-secondary magnetic-btn">Let's Connect</a>
+          </div>
+
+          <div class="hero-quick-meta reveal-item">
+            <span class="meta-tag"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Kerala, India</span>
+            <span class="meta-dot">•</span>
+            <span class="meta-tag"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg> BCA Graduate (2026)</span>
+            <span class="meta-dot">•</span>
+            <span class="meta-tag"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg> Angular & Node.js</span>
+          </div>
         </div>
+
+        <div class="hero-visual" id="heroVisual">
+          <div class="glass-card" data-tilt>
+            <div class="gc-head"><span class="status-dot"></span> Available for work</div>
+            <div class="gc-stats">
+              <div class="gc-stat"><span class="gc-num"><span data-count="2">0</span>+</span><span class="gc-lbl">Full stack projects</span></div>
+              <div class="gc-stat"><span class="gc-num"><span data-count="3">0</span></span><span class="gc-lbl">Years of BCA</span></div>
+            </div>
+            <div class="gc-divider"></div>
+            <p class="gc-title">Core stack</p>
+            <div class="gc-chips"><span>Angular</span><span>Node.js</span><span>Express</span><span>MySQL</span><span>PHP</span></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-down-indicator" aria-label="Scroll to About section">
+        <span class="mouse-icon"><span class="wheel"></span></span>
+        <span class="scroll-text">Scroll Down</span>
       </a>
-      <a href="https://github.com/ajaydevv05-droid" target="_blank" class="contact-card">
-        <div class="contact-icon">💻</div>
-        <div>
-          <div class="contact-label">GitHub</div>
-          <div class="contact-val">ajaydevv05-droid</div>
+    </section>
+
+        <!-- <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Angular</span><i></i><span>Node.js</span><i></i><span>Express.js</span><i></i><span>MySQL</span><i></i><span>PHP</span><i></i><span>Java</span><i></i><span>Python</span><i></i><span>JavaScript</span><i></i><span>HTML5</span><i></i><span>CSS3</span><i></i><span>Git & GitHub</span><i></i><span>REST APIs</span><i></i><span>Angular</span><i></i><span>Node.js</span><i></i><span>Express.js</span><i></i><span>MySQL</span><i></i><span>PHP</span><i></i><span>Java</span><i></i><span>Python</span><i></i><span>JavaScript</span><i></i><span>HTML5</span><i></i><span>CSS3</span><i></i><span>Git & GitHub</span><i></i><span>REST APIs</span><i></i></div></div> -->
+
+    <!-- ABOUT -->
+    <section id="about" class="section-padding about-section">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <span class="section-subtitle">01 / ABOUT ME</span>
+          <h2 class="section-title reveal-text-mask" data-text-reveal>Passion for building scalable, user-centric web applications.</h2>
         </div>
-      </a>
-      <a href="https://www.linkedin.com/in/ajay-dev-v/" target="_blank" class="contact-card">
-        <div class="contact-icon">🔗</div>
-        <div>
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-val">ajay-dev-v</div>
+
+        <div class="about-grid">
+          <div class="about-text-col reveal-item">
+            <p class="lead-text">
+              I’m Ajay Dev V, a BCA graduate and aspiring Full Stack Developer from Kerala. I enjoy building practical software solutions and exploring modern web technologies.
+            </p>
+            <p>
+              My experience covers both frontend and backend development — from crafting intuitive, responsive user interfaces with Angular to building robust REST APIs with Node.js and managing relational databases with MySQL.
+            </p>
+            <p>
+              Through my full stack projects like <strong>UniBites</strong> and <strong>ArtHub</strong>, I’ve strengthened my skills in database architecture, application security, role-based access control, and complete software deployment.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-item"><span class="hl-number">2+</span><span class="hl-label">Full Stack Projects Built</span></div>
+              <div class="highlight-item"><span class="hl-number">BCA</span><span class="hl-label">Graduated 2026</span></div>
+              <div class="highlight-item"><span class="hl-number">100%</span><span class="hl-label">Dedicated & Open to Work</span></div>
+            </div>
+          </div>
+
+          <div class="about-info-col reveal-item">
+            <div class="info-card">
+              <div class="info-row"><span class="info-label">Degree</span><span class="info-value">Bachelor of Computer Applications (BCA)</span></div>
+              <div class="info-row"><span class="info-label">Institution</span><span class="info-value">Santhigiri College of Computer Sciences</span></div>
+              <div class="info-row"><span class="info-label">Location</span><span class="info-value">Vazhithala, Thodupuzha, Kerala</span></div>
+              <div class="info-row"><span class="info-label">Graduation Year</span><span class="info-value">2026</span></div>
+              <div class="info-row"><span class="info-label">Availability</span><span class="info-value highlight-green">Immediate (Full-time / Remote)</span></div>
+            </div>
+          </div>
         </div>
-      </a>
-    </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section-padding skills-section bg-subtle">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <span class="section-subtitle">02 / SKILLS & TECH STACK</span>
+          <h2 class="section-title reveal-text-mask" data-text-reveal>Technologies & tools I work with.</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-category-card reveal-item">
+            <div class="card-icon-header"><div class="cat-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div><h3>Frontend Development</h3></div>
+            <p class="cat-desc">Building clean, interactive, and responsive web user interfaces.</p>
+            <div class="skill-tags">
+              <span class="skill-pill"><span class="pill-dot"></span> HTML5</span>
+              <span class="skill-pill"><span class="pill-dot"></span> CSS3</span>
+              <span class="skill-pill"><span class="pill-dot"></span> JavaScript (ES6+)</span>
+              <span class="skill-pill highlight"><span class="pill-dot"></span> Angular</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Responsive UI/UX</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card reveal-item" data-delay="100">
+            <div class="card-icon-header"><div class="cat-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg></div><h3>Backend Development</h3></div>
+            <p class="cat-desc">Designing robust server logic, RESTful APIs, and middleware systems.</p>
+            <div class="skill-tags">
+              <span class="skill-pill highlight"><span class="pill-dot"></span> Node.js</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Express.js</span>
+              <span class="skill-pill"><span class="pill-dot"></span> PHP</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Java</span>
+              <span class="skill-pill"><span class="pill-dot"></span> RESTful APIs</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card reveal-item" data-delay="150">
+            <div class="card-icon-header"><div class="cat-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div><h3>Database & Storage</h3></div>
+            <p class="cat-desc">Structuring relational data models and writing optimized queries.</p>
+            <div class="skill-tags">
+              <span class="skill-pill highlight"><span class="pill-dot"></span> MySQL</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Relational Schema Design</span>
+              <span class="skill-pill"><span class="pill-dot"></span> SQL Queries</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Data Integrity</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card reveal-item" data-delay="200">
+            <div class="card-icon-header"><div class="cat-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></svg></div><h3>Programming Languages</h3></div>
+            <p class="cat-desc">Core Computer Science fundamentals and object-oriented programming.</p>
+            <div class="skill-tags">
+              <span class="skill-pill"><span class="pill-dot"></span> C</span>
+              <span class="skill-pill"><span class="pill-dot"></span> C++</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Java</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Python</span>
+              <span class="skill-pill"><span class="pill-dot"></span> JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card reveal-item" data-delay="250">
+            <div class="card-icon-header"><div class="cat-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Developer Tools</h3></div>
+            <p class="cat-desc">Version control, environment management, and development tools.</p>
+            <div class="skill-tags">
+              <span class="skill-pill"><span class="pill-dot"></span> Git</span>
+              <span class="skill-pill"><span class="pill-dot"></span> GitHub</span>
+              <span class="skill-pill"><span class="pill-dot"></span> VS Code</span>
+              <span class="skill-pill"><span class="pill-dot"></span> Linux Terminal</span>
+              <span class="skill-pill"><span class="pill-dot"></span> NPM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (SLIDER) -->
+    <section id="projects" class="section-padding projects-section">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <span class="section-subtitle">03 / FEATURED PROJECTS</span>
+          <h2 class="section-title reveal-text-mask" data-text-reveal>Practical applications I've engineered.</h2>
+        </div>
+
+        <div class="projects-slider">
+          <div class="slider-track" id="sliderTrack" data-cursor="Drag" tabindex="0" aria-label="Projects slider">
+
+            <article class="project-featured-card case-study-card featured-unibites" data-project-card="unibites">
+              <div class="project-grid">
+                <div class="project-img-wrapper" data-parallax-frame>
+                  <img src="unibites.png" alt="UniBites Canteen Management Application" class="project-img" data-parallax-image draggable="false">
+                  <div class="project-badge">Featured Case Study</div>
+                </div>
+                <div class="project-content">
+                  <div class="project-meta-top">
+                    <span class="project-category">Full Stack Web Application</span>
+                    <span class="project-year">2026</span>
+                  </div>
+                  <h3 class="project-title">UniBites</h3>
+                  <p class="project-description">
+                    Smart University Canteen Management System designed to simplify campus food ordering, payment management and administrative operations.
+                  </p>
+
+                  <div class="project-features">
+                    <h4 class="features-title">Key Capabilities:</h4>
+                    <ul class="features-list">
+                      <li>Student & staff food ordering with digital cart checkout</li>
+                      <li>Role-based authentication & staff discount rules</li>
+                      <li>Kitchen-side real-time order tracking dashboard</li>
+                      <li>Sales reporting with automated PDF & Excel export</li>
+                    </ul>
+                  </div>
+
+                  <div class="tech-stack-tags">
+                    <span class="tech-tag" data-tech-tag>Angular</span>
+                    <span class="tech-tag" data-tech-tag>Node.js</span>
+                    <span class="tech-tag" data-tech-tag>Express.js</span>
+                    <span class="tech-tag" data-tech-tag>MySQL</span>
+                  </div>
+
+                  <div class="project-actions">
+                    <a href="https://github.com/ajaydevv05-droid/unibites" target="_blank" rel="noopener noreferrer" data-cursor="GitHub" class="btn btn-outline magnetic-btn">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                      <span>View GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-featured-card case-study-card" data-project-card="arthub">
+              <div class="project-grid">
+                <div class="project-img-wrapper" data-parallax-frame>
+                  <img src="arthub.png" alt="ArtHub Digital Artwork Platform" class="project-img" data-parallax-image draggable="false">
+                </div>
+                <div class="project-content">
+                  <div class="project-meta-top">
+                    <span class="project-category">Full Stack Art Marketplace</span>
+                    <span class="project-year">2025</span>
+                  </div>
+                  <h3 class="project-title">ArtHub</h3>
+                  <p class="project-description">
+                    An online platform for artists and customers to showcase, explore and purchase artworks with streamlined content management.
+                  </p>
+
+                  <div class="project-features">
+                    <h4 class="features-title">Key Capabilities:</h4>
+                    <ul class="features-list">
+                      <li>Artist profile creation & artwork gallery cataloging</li>
+                      <li>Category & subcategory artwork filtering</li>
+                      <li>Customer purchase requests & payment management</li>
+                      <li>Built-in review, feedback & rating system</li>
+                    </ul>
+                  </div>
+
+                  <div class="tech-stack-tags">
+                    <span class="tech-tag" data-tech-tag>PHP</span>
+                    <span class="tech-tag" data-tech-tag>MySQL</span>
+                    <span class="tech-tag" data-tech-tag>HTML5</span>
+                    <span class="tech-tag" data-tech-tag>CSS3</span>
+                    <span class="tech-tag" data-tech-tag>JavaScript</span>
+                  </div>
+
+                  <div class="project-actions">
+                    <a href="https://github.com/ajaydevv05-droid/Arthub" target="_blank" rel="noopener noreferrer" data-cursor="GitHub" class="btn btn-outline magnetic-btn">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                      <span>View GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="slider-controls">
+            <button class="slider-btn" id="sliderPrev" aria-label="Previous project">←</button>
+            <div class="slider-dots" id="sliderDots"></div>
+            <button class="slider-btn" id="sliderNext" aria-label="Next project">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section id="journey" class="section-padding journey-section bg-subtle">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <span class="section-subtitle">04 / MY JOURNEY</span>
+          <h2 class="section-title reveal-text-mask" data-text-reveal>Academic milestone & growth timeline.</h2>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item reveal-item">
+            <div class="timeline-marker"><span class="marker-dot"></span></div>
+            <div class="timeline-card">
+              <span class="timeline-year">2021</span>
+              <h3 class="timeline-title">Completed 10th Grade</h3>
+              <p class="timeline-inst">Government Boys HSS, Vaikom</p>
+              <p class="timeline-desc">Built a strong foundation in Mathematics, Logic, and Science.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-item" data-delay="100">
+            <div class="timeline-marker"><span class="marker-dot"></span></div>
+            <div class="timeline-card">
+              <span class="timeline-year">2023</span>
+              <h3 class="timeline-title">Completed Plus Two (Higher Secondary)</h3>
+              <p class="timeline-inst">St. Michaels HSS, Kaduthuruthy</p>
+              <p class="timeline-desc">Specialized in Computer Science & Mathematics, discovering a passion for programming.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-item" data-delay="200">
+            <div class="timeline-marker"><span class="marker-dot"></span></div>
+            <div class="timeline-card">
+              <span class="timeline-year">2026</span>
+              <h3 class="timeline-title">Completed BCA (Bachelor of Computer Applications)</h3>
+              <p class="timeline-inst">Santhigiri College of Computer Sciences, Vazhithala, Thodupuzha</p>
+              <p class="timeline-desc">Mastered core Data Structures, Software Engineering, Database Systems, and web development frameworks.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-item" data-delay="300">
+            <div class="timeline-marker"><span class="marker-dot pulse"></span></div>
+            <div class="timeline-card active-card">
+              <span class="timeline-year badge-now">PRESENT (2026)</span>
+              <h3 class="timeline-title">Building Projects & Professional Career</h3>
+              <p class="timeline-inst">Open to Work · Full Stack Development</p>
+              <p class="timeline-desc">Actively building production-ready projects (UniBites, ArtHub) and seeking full-time or remote developer opportunities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section-padding education-section">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <span class="section-subtitle">05 / EDUCATION</span>
+          <h2 class="section-title reveal-text-mask" data-text-reveal>Academic background.</h2>
+        </div>
+
+        <div class="education-grid">
+          <div class="edu-card reveal-item">
+            <div class="edu-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
+            <div class="edu-period">2023 — 2026</div>
+            <h3 class="edu-degree">Bachelor of Computer Applications (BCA)</h3>
+            <p class="edu-school">Santhigiri College of Computer Sciences</p>
+            <p class="edu-location">Vazhithala, Thodupuzha, Kerala</p>
+          </div>
+
+          <div class="edu-card reveal-item" data-delay="100">
+            <div class="edu-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div>
+            <div class="edu-period">2021 — 2023</div>
+            <h3 class="edu-degree">Plus Two (Higher Secondary)</h3>
+            <p class="edu-school">St. Michaels HSS</p>
+            <p class="edu-location">Kaduthuruthy, Kerala</p>
+          </div>
+
+          <div class="edu-card reveal-item" data-delay="200">
+            <div class="edu-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/></svg></div>
+            <div class="edu-period">2021</div>
+            <h3 class="edu-degree">Secondary Schooling (10th)</h3>
+            <p class="edu-school">Government Boys HSS</p>
+            <p class="edu-location">Vaikom, Kerala</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-padding contact-section bg-subtle">
+      <div class="container">
+        <div class="contact-box-grid">
+          <div class="contact-info-col reveal-item">
+            <span class="section-subtitle">06 / GET IN TOUCH</span>
+            <h2 class="contact-main-heading reveal-text-mask" data-text-reveal>Let's build something meaningful.</h2>
+            <p class="contact-desc">
+              Currently open to opportunities, internships and full-time roles in software development. Feel free to reach out directly via email or message.
+            </p>
+
+            <div class="contact-methods">
+              <a href="mailto:ajaydevv05@gmail.com" class="contact-method-item">
+                <div class="method-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7L2 7"/></svg></div>
+                <div class="method-details">
+                  <span class="method-label">Direct Email</span>
+                  <span class="method-val">ajaydevv05@gmail.com</span>
+                </div>
+              </a>
+
+              <a href="https://github.com/ajaydevv05-droid" target="_blank" rel="noopener noreferrer" class="contact-method-item">
+                <div class="method-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
+                <div class="method-details">
+                  <span class="method-label">GitHub Profile</span>
+                  <span class="method-val">github.com/ajaydevv05-droid</span>
+                </div>
+              </a>
+
+              <div class="contact-method-item">
+                <div class="method-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                <div class="method-details">
+                  <span class="method-label">Location</span>
+                  <span class="method-val">Kerala, India (Remote Available)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-col reveal-item">
+            <form id="contactForm" class="contact-form" onsubmit="handleFormSubmit(event)">
+              <h3 class="form-title">Send a Message</h3>
+
+              <div class="form-group">
+                <label for="userName">Your Name</label>
+                <input type="text" id="userName" name="name" required placeholder="e.g. Alex Morgan">
+              </div>
+
+              <div class="form-group">
+                <label for="userEmail">Your Email Address</label>
+                <input type="email" id="userEmail" name="email" required placeholder="alex@example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="userMessage">Your Message</label>
+                <textarea id="userMessage" name="message" rows="5" required placeholder="Hi Ajay, I'd like to discuss a project or opportunity..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block magnetic-btn" id="submitBtn">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+
+              <div id="formResponse" class="form-response"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floating-scroll-widget" id="floatingAvatarWidget" title="Scroll to top">
+    <div class="mini-avatar-ring"><span class="mini-initials">AD</span></div>
+    <span class="mini-widget-text" id="scrollSectionLabel">Ajay Dev V</span>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <span class="footer-name">Ajay Dev V</span>
-  <span class="footer-copy">© 2026 · Kerala, India</span>
-</footer>
+  <button id="backToTop" class="back-to-top-btn" aria-label="Back to Top">↑</button>
 
-<script src="script.js"></script>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo footer-logo-ai"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>AJAY DEV V</span>
+        <span class="footer-role">Full Stack Developer</span>
+        <p class="footer-tagline">"Building. Learning. Improving."</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/ajaydevv05-droid" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+        <a href="mailto:ajaydevv05@gmail.com" class="footer-link">Email</a>
+        <a href="https://www.linkedin.com/in/ajay-dev-v/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2026 Ajay Dev V. All rights reserved.</p>
+      <p class="footer-location">Kerala, India</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
